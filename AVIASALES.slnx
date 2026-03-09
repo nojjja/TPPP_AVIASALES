@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="AirlineBooking.Application/AVIASALES.Application.csproj" Id="848f5f84-a696-4fa6-9e48-e3c3e68b8f40" />
+  <Project Path="AirlineBooking.Domain/AVIASALES.Domain.csproj" Id="942b8825-cece-4ad8-a894-fb5574a3ff1a" />
+  <Project Path="AirlineBooking.Infrastructure/AVIASALES.Infrastructure.csproj" Id="d1344ab9-26af-42d6-b2e5-1d4355c711dc" />
+  <Project Path="AVIASALES/AVIASALES.csproj" Id="92a8d2c1-9c30-4f64-8f72-568a45d51ae9" />
+</Solution>
