@@ -4,10 +4,10 @@ namespace AVIASALES.Domain.FlightServices
 {
     public class AdultServiceFactory : IFlightServiceFactory
     {
-        public Seat CreateSeat() => new Seat("Standard seat"); // можно единый тип для взрослых
+        public Seat CreateSeat() => new Seat("Standard seat"); 
 
-        public Meal CreateMeal() => new Meal("Adult meal"); // полноценная еда для взрослого
+        public Meal CreateMeal() => new Meal("Adult meal"); 
 
-        public Luggage CreateLuggage() => new Luggage(20); // стандартный багаж
+        public Luggage CreateLuggage() => new Luggage(20); 
     }
 }

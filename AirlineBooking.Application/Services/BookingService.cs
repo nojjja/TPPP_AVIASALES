@@ -14,29 +14,27 @@ namespace AVIASALES.Domain.Services
 
         public BookingService()
         {
-            _repository = FlightRepository.Instance; // Singleton
+            _repository = FlightRepository.Instance; 
         }
 
-        // Получение всех доступных рейсов
+
         public IReadOnlyList<Flight> GetAvailableFlights()
         {
             return _repository.Flights.AsReadOnly();
         }
 
-        // Создание нового бронирования
         public Booking CreateBooking(
             string passengerName,
             string from,
             string to,
             string classType,
-            bool isChild)  // новый параметр: ребенок или взрослый
+            bool isChild)  
         {
-            // Находим рейс
+
             var flight = _repository.Flights.FirstOrDefault(f => f.From == from && f.To == to);
             if (flight == null)
                 throw new ArgumentException("Рейс не найден");
 
-            // создаём Ticket через обычные TicketCreator
             TicketCreator creator;
             if (classType == "Economy")
                 creator = new EconomyTicketCreator();
@@ -49,12 +47,12 @@ namespace AVIASALES.Domain.Services
 
             var ticket = creator.CreateTicket(flight);
 
-            // создаём маршрут
+     
             var builder = new RouteBuilder();
             var director = new RouteDirector();
             var route = director.BuildDirectRoute(builder, flight);
 
-            // выбираем фабрику сервисов по возрасту
+    
             IFlightServiceFactory serviceFactory = isChild
                 ? (IFlightServiceFactory)new ChildServiceFactory()
                 : new AdultServiceFactory();
@@ -63,7 +61,7 @@ namespace AVIASALES.Domain.Services
             var meal = serviceFactory.CreateMeal();
             var luggage = serviceFactory.CreateLuggage();
 
-            // Создаём бронирование
+
             var booking = new Booking(passengerName, ticket, route)
             {
                 Seat = seat,
@@ -74,7 +72,7 @@ namespace AVIASALES.Domain.Services
             return booking;
         }
 
-        // Клонируем существующее бронирование (Prototype)
+
         public Booking CloneBooking(Booking originalBooking, string newPassengerName)
         {
             var cloned = (Booking)originalBooking.Clone();

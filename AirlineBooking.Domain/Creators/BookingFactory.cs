@@ -4,10 +4,8 @@ using System;
 
 namespace AVIASALES.Domain.Factories
 {
-    // Фабрика для создания билета и маршрута
     public class BookingFactory
     {
-        // Создаёт маршрут (Route) с одним рейсом
         public Route CreateRoute(Flight flight)
         {
             var route = new Route();
@@ -15,7 +13,6 @@ namespace AVIASALES.Domain.Factories
             return route;
         }
 
-        // Создаёт билет нужного класса для рейса
         public Ticket CreateTicket(Flight flight, string classType)
         {
             switch (classType)

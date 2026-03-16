@@ -4,19 +4,19 @@ using System.Collections.Generic;
 
 public class FlightRepository
 {
-    // Хранит единственный экземпляр репозитория
+
     private static FlightRepository _instance;
 
-    // Объект блокировки для потокобезопасности
+
     private static readonly object _lock = new object();
 
-    // Список всех доступных рейсов
+
     public List<Flight> Flights { get; private set; }
 
-    // Приватный конструктор запрещает создание объекта извне
+
     private FlightRepository()
     {
-        // Инициализация тестовых рейсов
+ 
         Flights = new List<Flight>
         {
             new Flight("SU100", "Moscow", "Paris", DateTime.Now.AddHours(5), 200),
@@ -25,15 +25,15 @@ public class FlightRepository
         };
     }
 
-    // Глобальная точка доступа к единственному экземпляру
+
     public static FlightRepository Instance
     {
         get
         {
-            // Ленивая инициализация Singleton
+
             if (_instance == null)
             {
-                lock (_lock) // защита от создания нескольких объектов в потоках
+                lock (_lock) 
                 {
                     if (_instance == null)
                         _instance = new FlightRepository();

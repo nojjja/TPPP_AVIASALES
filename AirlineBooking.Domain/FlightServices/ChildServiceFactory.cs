@@ -4,10 +4,10 @@ namespace AVIASALES.Domain.FlightServices
 {
     public class ChildServiceFactory : IFlightServiceFactory
     {
-        public Seat CreateSeat() => new Seat("Standard seat"); // можно тоже единый тип
+        public Seat CreateSeat() => new Seat("Standard seat"); 
 
-        public Meal CreateMeal() => new Meal("Kids meal"); // специальная детская еда
+        public Meal CreateMeal() => new Meal("Kids meal"); 
 
-        public Luggage CreateLuggage() => new Luggage(15); // меньше багаж для ребенка
+        public Luggage CreateLuggage() => new Luggage(15); 
     }
 }

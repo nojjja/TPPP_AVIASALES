@@ -23,9 +23,9 @@ namespace AVIASALES
 
         private void LoadFlights()
         {
-            // Отображаем рейсы как "From → To"
+           
             FlightsComboBox.ItemsSource = _bookingService.GetAvailableFlights();
-            FlightsComboBox.DisplayMemberPath = "RouteSummary"; // используем свойство RouteSummary или ToString()
+            FlightsComboBox.DisplayMemberPath = "RouteSummary"; 
         }
 
         private void BookButton_Click(object sender, RoutedEventArgs e)
@@ -52,15 +52,14 @@ namespace AVIASALES
             var selectedClass = ((ComboBoxItem)ClassComboBox.SelectedItem).Content.ToString();
             bool hasBaggage = BaggageCheckBox.IsChecked ?? false;
             bool hasMeal = MealCheckBox.IsChecked ?? false;
-            bool isChild = IsChildCheckBox.IsChecked ?? false; // теперь чекбокс доступен
+            bool isChild = IsChildCheckBox.IsChecked ?? false; 
 
-            // Создаём бронирование через сервис
             var booking = _bookingService.CreateBooking(
                 PassengerTextBox.Text,
                 selectedFlight.From,
                 selectedFlight.To,
                 selectedClass,
-                isChild // передаём в сервис информацию о ребёнке
+                isChild 
             );
 
             booking.HasBaggage = hasBaggage;
