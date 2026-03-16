@@ -11,9 +11,9 @@ namespace AVIASALES.Domain.Entities
         public Ticket Ticket { get; }
         public Route Route { get; }
 
-        public Seat Seat { get; set; }
-        public Meal Meal { get; set; }
-        public Luggage Luggage { get; set; }
+        public ISeat Seat { get; set; }
+        public IMeal Meal { get; set; }
+        public ILuggage Luggage { get; set; }
 
         public bool HasBaggage { get; set; }
         public bool HasMeal { get; set; }

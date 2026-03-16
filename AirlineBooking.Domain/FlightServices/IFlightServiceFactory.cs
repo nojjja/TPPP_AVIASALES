@@ -4,8 +4,8 @@ namespace AVIASALES.Domain.FlightServices
 {
     public interface IFlightServiceFactory
     {
-        Seat CreateSeat();
-        Meal CreateMeal();
-        Luggage CreateLuggage();
+        ISeat CreateSeat();
+        IMeal CreateMeal();
+        ILuggage CreateLuggage();
     }
 }

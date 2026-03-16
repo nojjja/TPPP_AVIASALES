@@ -1,13 +1,12 @@
-﻿using AVIASALES.Domain.Entities;
+﻿using AirlineBooking.Domain.Entities;
+using AVIASALES.Domain.Entities;
 
 namespace AVIASALES.Domain.FlightServices
 {
     public class ChildServiceFactory : IFlightServiceFactory
     {
-        public Seat CreateSeat() => new Seat("Standard seat"); 
-
-        public Meal CreateMeal() => new Meal("Kids meal"); 
-
-        public Luggage CreateLuggage() => new Luggage(15); 
+        public ISeat CreateSeat() => new ChildSeat();       
+        public IMeal CreateMeal() => new ChildMeal();       
+        public ILuggage CreateLuggage() => new ChildLuggage(); 
     }
 }

@@ -42,18 +42,23 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Creators\FirstClassTicketCreator.cs" />
+    <Compile Include="Entities\AdultMeal.cs" />
+    <Compile Include="Entities\AdultSeat.cs" />
     <Compile Include="Entities\Booking.cs" />
+    <Compile Include="Entities\ChildLuggage.cs" />
+    <Compile Include="Entities\ChildMeal.cs" />
+    <Compile Include="Entities\ChildSeat.cs" />
     <Compile Include="Entities\Flight.cs" />
     <Compile Include="Entities\ICloneableBooking.cs" />
-    <Compile Include="Entities\Luggage.cs" />
-    <Compile Include="Entities\Meal.cs" />
+    <Compile Include="Entities\ILuggage.cs" />
+    <Compile Include="Entities\IMeal.cs" />
     <Compile Include="Entities\Route.cs" />
-    <Compile Include="Entities\Seat.cs" />
+    <Compile Include="Entities\ISeat.cs" />
+    <Compile Include="Entities\AdultLuggage.cs" />
     <Compile Include="Entities\Tickets\BusinessTicket.cs" />
     <Compile Include="Entities\Tickets\EconomyTicket.cs" />
     <Compile Include="Entities\Tickets\FirstClassTicket.cs" />
     <Compile Include="Entities\Tickets\Ticket.cs" />
-    <Compile Include="Creators\BookingFactory.cs" />
     <Compile Include="Creators\BusinessTicketCreator.cs" />
     <Compile Include="Creators\EconomyTicketCreator.cs" />
     <Compile Include="Creators\TicketCreator.cs" />
