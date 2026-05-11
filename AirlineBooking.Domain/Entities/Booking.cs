@@ -1,57 +1,83 @@
-﻿using AVIASALES.Domain.Entities.Tickets;
+using AVIASALES.Domain.Routing;
+using AVIASALES.Domain.States;
 using System;
-using System.Linq;
 
 namespace AVIASALES.Domain.Entities
 {
     public class Booking : ICloneable
     {
         public string PassengerName { get; set; }
-
-        public Ticket Ticket { get; }
-        public Route Route { get; }
-
-        public ISeat Seat { get; set; }
-        public IMeal Meal { get; set; }
-        public ILuggage Luggage { get; set; }
-
+        public Flight Flight { get; }
+        public IRouteComponent Route { get; }
+        public decimal TotalPrice { get; set; }
+        public string Description { get; set; }
+        public string PricingPolicy { get; set; }
         public bool HasBaggage { get; set; }
         public bool HasMeal { get; set; }
+        private IBookingState _state;
 
-        public Booking(string passengerName, Ticket ticket, Route route)
+        public Booking(string passengerName, Flight flight, IRouteComponent route)
         {
             PassengerName = passengerName;
-            Ticket = ticket;
+            Flight = flight;
             Route = route;
+            _state = new CreatedBookingState();
         }
 
-        public Booking Clone()
+        public string StateName
         {
-            return new Booking(PassengerName, Ticket, Route)  // shallow copy
+            get { return _state.Name; }
+        }
+
+        public object Clone()
+        {
+            return new Booking(PassengerName, Flight, Route)
             {
-                Seat = this.Seat,
-                Meal = this.Meal,
-                Luggage = this.Luggage,
-                HasBaggage = this.HasBaggage,
-                HasMeal = this.HasMeal
+                TotalPrice = TotalPrice,
+                Description = Description,
+                PricingPolicy = PricingPolicy,
+                HasBaggage = HasBaggage,
+                HasMeal = HasMeal
             };
         }
 
-  
-        object ICloneable.Clone() => Clone();
+        public string SummaryText => Summary();
 
- 
         public string Summary()
         {
-            var firstFlight = Route.Segments.FirstOrDefault();
-            string routeInfo = firstFlight != null ? $"{firstFlight.From} → {firstFlight.To}" : "Нет маршрута";
+            return string.Format(
+                "{0}: {1} | {2} | Fare: {3} | State: {4} | Total: {5}",
+                PassengerName,
+                Route.RouteSummary,
+                Description,
+                PricingPolicy,
+                StateName,
+                TotalPrice);
+        }
 
-            string services = "";
-            if (HasBaggage && Luggage != null) services += $"Baggage: {Luggage.WeightLimit}kg ";
-            if (HasMeal && Meal != null) services += $"Meal: {Meal.Name} ";
-            if (Seat != null) services += $"Seat: {Seat.Type} ";
+        public void Confirm()
+        {
+            _state.Confirm(this);
+        }
 
-            return $"{PassengerName} | {routeInfo} | {services}";
+        public void Cancel()
+        {
+            _state.Cancel(this);
+        }
+
+        public void Complete()
+        {
+            _state.Complete(this);
+        }
+
+        public void TransitionTo(IBookingState state)
+        {
+            _state = state;
+        }
+
+        public override string ToString()
+        {
+            return SummaryText;
         }
     }
 }

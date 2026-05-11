@@ -9,19 +9,18 @@ namespace AVIASALES.Domain.Entities
         public string To { get; }
         public DateTime Departure { get; }
         public decimal BasePrice { get; }
+        public double Distance { get; set; }
 
-        public Flight(string flightNumber, string from, string to, DateTime departure, decimal basePrice)
+        public Flight(string flightNumber, string from, string to, DateTime departure, decimal basePrice, double distance)
         {
             FlightNumber = flightNumber;
             From = from;
             To = to;
             Departure = departure;
             BasePrice = basePrice;
+            Distance = distance;
         }
 
-        public override string ToString()
-        {
-            return $"{From} → {To} ({FlightNumber})";
-        }
+        public override string ToString() => $"{From} → {To} ({FlightNumber})";
     }
 }

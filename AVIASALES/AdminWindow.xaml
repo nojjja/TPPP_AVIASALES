@@ -1,0 +1,55 @@
+<Window x:Class="AVIASALES.AdminWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Admin Panel"
+        Height="520"
+        Width="860"
+        WindowStartupLocation="CenterOwner"
+        Background="#F5F7FA"
+        FontFamily="Segoe UI">
+    <Grid Margin="20">
+        <Border Background="White" CornerRadius="8" Padding="20">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1.1*"/>
+                    <ColumnDefinition Width="20"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Text="Admin Panel" FontSize="22" FontWeight="Bold" Margin="0,0,0,12"/>
+                <TextBlock Grid.Row="1" Text="Manage booking states and watch Observer events in real time." FontSize="14" Foreground="#666666" Margin="0,0,0,12"/>
+
+                <Grid Grid.Row="2">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Text="Bookings" FontWeight="Bold" Margin="0,0,0,8"/>
+                    <ListBox Grid.Row="1" x:Name="BookingsListBox" DisplayMemberPath="DisplayTitle" Margin="0,0,0,10"/>
+                    <StackPanel Grid.Row="2" Orientation="Horizontal">
+                        <Button x:Name="ConfirmButton" Content="Confirm" Width="100" Margin="0,0,10,0" Click="ConfirmButton_Click"/>
+                        <Button x:Name="CompleteButton" Content="Complete" Width="100" Margin="0,0,10,0" Click="CompleteButton_Click"/>
+                        <Button x:Name="CancelButton" Content="Cancel" Width="100" Click="CancelButton_Click"/>
+                    </StackPanel>
+                </Grid>
+
+                <Grid Grid.Row="2" Grid.Column="2">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Text="Booking events" FontWeight="Bold" Margin="0,0,0,8"/>
+                    <ListBox Grid.Row="1" x:Name="EventsListBox"/>
+                </Grid>
+            </Grid>
+        </Border>
+    </Grid>
+</Window>

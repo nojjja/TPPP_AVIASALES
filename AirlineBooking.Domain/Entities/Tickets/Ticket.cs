@@ -1,4 +1,4 @@
-﻿using AVIASALES.Domain.Entities;
+using AVIASALES.Domain.Entities;
 
 namespace AVIASALES.Domain.Entities.Tickets
 {
@@ -13,9 +13,24 @@ namespace AVIASALES.Domain.Entities.Tickets
             Flight = flight;
         }
 
+        public virtual decimal GetCost()
+        {
+            return Price;
+        }
+
+        public virtual string GetFullDescription()
+        {
+            return string.Format("{0} ticket for flight {1}-{2}", ClassType, Flight.From, Flight.To);
+        }
+
         public override string ToString()
         {
-            return $"{ClassType} ticket | {Flight.From} → {Flight.To} | Price: {Price}";
+            return string.Format(
+                "{0} | {1} -> {2} | Price: {3}",
+                ClassType,
+                Flight.From,
+                Flight.To,
+                GetCost());
         }
     }
 }

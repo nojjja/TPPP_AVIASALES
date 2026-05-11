@@ -1,0 +1,26 @@
+[
+    {
+        "origin": "KIV",
+        "destination": "STN",
+        "price_eur": 85.50,
+        "departure_date": "2026-05-12T10:30:00",
+        "airline_code": "AF",
+        "distance": 2135
+    },
+    {
+        "origin": "KIV",
+        "destination": "OTP",
+        "price_eur": 42.00,
+        "departure_date": "2026-05-15T08:00:00",
+        "airline_code": "RO",
+        "distance": 2135
+    },
+    {
+        "origin": "KIV",
+        "destination": "FRA",
+        "price_eur": 150.25,
+        "departure_date": "2026-06-01T14:20:00",
+        "airline_code": "LH",
+        "distance": 2135
+    }
+]

@@ -41,8 +41,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Observers\BookingEventType.cs" />
+    <Compile Include="Observers\BookingNotification.cs" />
+    <Compile Include="Observers\IBookingObserver.cs" />
+    <Compile Include="Observers\IBookingSubject.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Interfaces\IFlightProvider.cs" />
     <Compile Include="Services\BookingService.cs" />
+    <Compile Include="Services\IExternalFlightProvider.cs" />
+    <Compile Include="Validation\BookingRequest.cs" />
+    <Compile Include="Validation\BookingValidationException.cs" />
+    <Compile Include="Validation\BookingValidationHandler.cs" />
+    <Compile Include="Validation\ChildCompositeRouteValidationHandler.cs" />
+    <Compile Include="Validation\ClassSelectionValidationHandler.cs" />
+    <Compile Include="Validation\DepartureTimeValidationHandler.cs" />
+    <Compile Include="Validation\DuplicateBookingValidationHandler.cs" />
+    <Compile Include="Validation\FlightSelectionValidationHandler.cs" />
+    <Compile Include="Validation\PassengerNameValidationHandler.cs" />
+    <Compile Include="Validation\RouteValidationHandler.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AirlineBooking.Domain\AVIASALES.Domain.csproj">

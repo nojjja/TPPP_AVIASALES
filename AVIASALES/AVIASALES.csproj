@@ -55,10 +55,26 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="AdminLoginWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="AdminWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Compile Include="AdminLoginWindow.xaml.cs">
+      <DependentUpon>AdminLoginWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="AdminWindow.xaml.cs">
+      <DependentUpon>AdminWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -67,6 +83,11 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="UI\Commands\BookFlightCommand.cs" />
+    <Compile Include="UI\Commands\CloneBookingCommand.cs" />
+    <Compile Include="UI\Commands\OpenAdminPanelCommand.cs" />
+    <Compile Include="UI\Commands\WindowCommandBase.cs" />
+    <Compile Include="UI\Decorators\DisplayBookingDecorator.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -93,13 +114,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Application\Managers\" />
-    <Folder Include="Application\Services\" />
-    <Folder Include="Infrastructure\Repositories\" />
-    <Folder Include="Presentation\ViewModels\" />
-    <Folder Include="Presentation\Views\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AirlineBooking.Application\AVIASALES.Application.csproj">
